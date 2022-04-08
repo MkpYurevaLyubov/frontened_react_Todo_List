@@ -1,12 +1,12 @@
+import Task from '../taskTodo/index';
 import './tasksTodo.scss';
 
-const TasksTodo = ({ tasks }) => {
-  return (
+const TasksTodo = ({ tasks, onChangeTasks }) => {
+    return (
     <div className='taskBox'>
-      {tasks.map((el, idx) => (
-        <div key={`task-${idx}`} className='box'>
-          <input value={el.isCheck} type='checkbox' />
-          <p>{el.text}</p>
+      {tasks.map((task, idx) => (
+        <div key={`task-${idx}`}>
+          <Task task={task} onChangeTasks={onChangeTasks} />
         </div>
       ))}
     </div>
