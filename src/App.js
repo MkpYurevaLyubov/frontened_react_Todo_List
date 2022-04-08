@@ -6,15 +6,16 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      let res = await fetch('http://localhost:8000/allTasks', {
-        method: 'GET',
-      });
-      res = await res.json();
-      setTasks(res);
-    };
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    let res = await fetch('http://localhost:8000/allTasks', {
+      method: 'GET',
+    });
+    res = await res.json();
+    setTasks(res);
+  };
 
   const onChangeTasks = (newTask) => {
     setTasks([...tasks, newTask]);

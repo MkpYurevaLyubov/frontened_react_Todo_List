@@ -10,8 +10,8 @@ const InputTodo = ({ onChangeTasks }) => {
     const resp = await fetch('http://localhost:8000/createTask', {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        "Access-Control-Allow-Origin": "*"
+        'Content-Type': 'application/json;charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
         text,
@@ -26,7 +26,7 @@ const InputTodo = ({ onChangeTasks }) => {
   return (
     <div className='main'>
       <h1>To-do list</h1>
-      <div className="inputBlock">
+      <div className='inputBlock'>
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
