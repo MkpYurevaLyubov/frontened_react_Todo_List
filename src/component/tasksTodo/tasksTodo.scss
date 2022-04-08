@@ -5,11 +5,28 @@
 
   .box {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid lightgray;
 
-    input {
-      margin-right: 10px;
+    .task {
+      display: flex;
+      align-items: center;
+
+      input {
+        margin-right: 10px;
+      }
+    }
+
+    .iconsBox {
+      display: flex;
+      justify-content: space-between;
+      width: 20%;
+
+      img {
+        width: 25px;
+        cursor: pointer;
+      }
     }
   }
 }

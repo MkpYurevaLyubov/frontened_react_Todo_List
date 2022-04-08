@@ -7,7 +7,7 @@ const InputTodo = ({ onChangeTasks }) => {
   const onClickBtn = async () => {
     const text = value.trim();
     if (!text) return alert('Enter task!');
-    const resp = await fetch('http://localhost:8000/createTask', {
+    await fetch('http://localhost:8000/createTask', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -18,8 +18,7 @@ const InputTodo = ({ onChangeTasks }) => {
         isCheck: false,
       })
     });
-    const result = await resp.json();
-    onChangeTasks(result);
+    onChangeTasks();
     setValue('');
   };
 
