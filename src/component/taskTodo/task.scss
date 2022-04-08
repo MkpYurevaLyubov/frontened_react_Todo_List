@@ -11,6 +11,25 @@
     input {
       margin-right: 10px;
     }
+
+    p {
+      overflow-wrap: anywhere;
+    }
+
+    .decoration {
+      text-decoration: line-through;
+    }
+
+    .displayNone {
+      display: none;
+    }
+
+    .inputText {
+      width: 80%;
+      padding: 5px;
+      font-size: 1rem;
+      margin: 9px 0;
+    }
   }
 
   .iconsBox {
@@ -21,6 +40,10 @@
     img {
       width: 25px;
       cursor: pointer;
+    }
+
+    .displayNone {
+      display: none;
     }
   }
 }

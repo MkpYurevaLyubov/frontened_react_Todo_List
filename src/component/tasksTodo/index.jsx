@@ -4,8 +4,8 @@ import './tasksTodo.scss';
 const TasksTodo = ({ tasks, onChangeTasks }) => {
     return (
     <div className='taskBox'>
-      {tasks.map((task, idx) => (
-        <div key={`task-${idx}`}>
+      {tasks.map((task) => (
+        <div key={task._id}>
           <Task task={task} onChangeTasks={onChangeTasks} />
         </div>
       ))}
