@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import InputTodo from './component/inputTodo/index';
 import TasksTodo from './component/tasksTodo/index';
+import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <div className='main'>
+      <h1>To-do list</h1>
       <InputTodo onChangeTasks={onChangeTasks} />
       <TasksTodo tasks={tasks} onChangeTasks={onChangeTasks} />
     </div>

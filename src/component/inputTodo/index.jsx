@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import './inputTodo.scss';
 
 const InputTodo = ({ onChangeTasks }) => {
@@ -23,15 +23,12 @@ const InputTodo = ({ onChangeTasks }) => {
   };
 
   return (
-    <div className='main'>
-      <h1>To-do list</h1>
-      <div className='inputBlock'>
-        <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button onClick={onClickBtn}>Click</button>
-      </div>
+    <div className='inputBlock'>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <button onClick={onClickBtn}>Click</button>
     </div>
   );
 };
