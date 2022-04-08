@@ -1,0 +1,15 @@
+.taskBox {
+  display: flex;
+  flex-direction: column;
+  width: 16rem;
+
+  .box {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+
+    input {
+      margin-right: 10px;
+    }
+  }
+}
