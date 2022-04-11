@@ -1,5 +1,17 @@
 .taskBox {
   display: flex;
   flex-direction: column;
-  width: 17rem;
+  width: 50%;
+}
+
+@media (max-width: 992px) {
+  .taskBox {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .taskBox {
+    width: 90%;
+  }
 }
