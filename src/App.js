@@ -16,6 +16,7 @@ const App = () => {
       method: 'GET',
     });
     res = await res.json();
+    res = res.sort((a, b) => a.isCheck === b.isCheck ? 0 : a.isCheck ? 1 : -1);
     setTasks(res);
     setFlag(false);
   };

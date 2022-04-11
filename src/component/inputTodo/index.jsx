@@ -28,7 +28,7 @@ const InputTodo = ({ onChangeTasks }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button onClick={onClickBtn}>Click</button>
+      <button onClick={onClickBtn}>Add</button>
     </div>
   );
 };
