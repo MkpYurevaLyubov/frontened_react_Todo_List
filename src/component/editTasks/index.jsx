@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "axios";
 import "./editTasks.scss";
 
 const EditTask = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [task, setTask] = useState(null);
-  
+  const [task, setTask] = useState({});
+  const { text } = task;
+
   useEffect(() => {
     fetchData(id);
   }, [id]);
   
   const fetchData = async (id) => {
-    try {
-      let res = await fetch(`http://localhost:8000/findTask?id=${id}`, {
-        method: "GET"
+    axios.get(`http://localhost:8000/findTask?id=${id}`)
+      .then(res => {
+        const result = res.data[0];
+        if (result.isCheck) return navigate("/tasks");
+        setTask(result);
+      })
+      .catch(() => {
+        navigate("/tasks");
+        alert('A task not found');
       });
-      res = await res.json();
-      if (res[0].isCheck) return navigate("/tasks");
-      setTask(res[0]);
-    } catch (e) {
-      navigate("/tasks");
-      alert('A task not found');
-    }
   }
 
   const onChangeText = (e) => {
@@ -34,19 +35,10 @@ const EditTask = () => {
   }
 
   const updateTask = async () => {
-    try {
-      await fetch("http://localhost:8000/updateTask", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          "Access-Control-Allow-Origin": "*"
-        },
-        body: JSON.stringify(task)
+    axios.patch("http://localhost:8000/updateTask", task)
+      .then(() => {
+        navigate("/tasks")
       });
-      navigate("/tasks");
-    } catch (e) {
-      navigate("/tasks");
-    }
   };
 
   return (
@@ -55,7 +47,7 @@ const EditTask = () => {
         <div className="editingContainer">
           <TextareaAutosize
             className="textarea"
-            value={task.text || ""}
+            value={text || ""}
             onChange={(e) => onChangeText(e)}
           />
           <div className="btnContainer">

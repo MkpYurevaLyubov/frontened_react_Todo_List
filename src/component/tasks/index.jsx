@@ -1,31 +1,27 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import CreateTask from "../createTask";
 import TasksContainer from "../tasksContainer";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
-  const [flag, setFlag] = useState(true);
+  const [isChange, setIsChange] = useState(true);
 
   useEffect(() => {
-    if (flag) fetchData();
-  }, [flag]);
+    if (isChange) fetchData();
+  }, [isChange]);
 
-  const fetchData = async () => {
-    try {
-      let res = await fetch("http://localhost:8000/allTasks", {
-        method: "GET",
+  const fetchData = () => {
+    axios.get("http://localhost:8000/allTasks")
+      .then(res => {
+        res = res.data.sort((a, b) => a.isCheck === b.isCheck ? 0 : a.isCheck ? 1 : -1);
+        setTasks(res);
+        setIsChange(false);
       });
-      res = await res.json();
-      res = res.sort((a, b) => a.isCheck === b.isCheck ? 0 : a.isCheck ? 1 : -1);
-      setTasks(res);
-      setFlag(false);
-    } catch (e) {
-      setFlag(false);
-    }
   };
 
   const onChangeTasks = () => {
-    setFlag(true);
+    setIsChange(true);
   };
 
   return (
